@@ -14,22 +14,33 @@ def smoothed_array(arr):
         smoothed_data = np.append(smoothed_data, smooth_point)
     return smoothed_data
 
+def plot(old, new, pdf):
+    plt.subplot(2,1,1)
+    plt.plot(old)
+    plt.title('Rough')
+    plt.subplot(2,1,2)
+    
+    plt.plot(new)
+    plt.xlabel('Smooth')
+    plt.savefig(pdf)
+
 def analyze(file):
-    file_name = file
-    print(file_name)
+    file_name = file.replace('dat', 'pdf')
     data = np.loadtxt(file)
     smoothed_data = smoothed_array(data)
-    plt.plot(data)
-    plt.plot(smoothed_data)
-    # plt.savefig()
+    plot(data, smoothed_data, file_name)
+    # plt.subplot(2,1,1)
+    # plt.plot(data)
+    # plt.title('Rough')
+    # plt.subplot(2,1,2)
+    # plt.plot(smoothed_data)
+    # plt.xlabel('Smooth')
+    # plt.savefig(file_name)
+    
 
 def main():
     for fname in glob.glob('*.dat'):
         analyze(fname)
 
 main()
-
-# plt.plot(data_one)
-# plt.plot(data_two)
-# plt.show()
 
