@@ -20,7 +20,7 @@ def plot(old, new, pdf):
     axes[0].plot(old)
     axes[0].set(title='Rough')
 
-    axes[1].set(ylabel='Smooth')
+    axes[1].set(xlabel='Smooth')
     axes[1].plot(new)
     plt.savefig(pdf)
 
@@ -29,12 +29,19 @@ def analyze(file):
     data = np.loadtxt(file)
     smoothed_data = smoothed_array(data)
     for num in smoothed_data:
-        pos = smoothed_data[num]
+        y = num
+        y_one = 4
+    plot(data, smoothed_data, file_name)
+
+# def main():
+#     for fname in glob.glob('*.dat'):
+#         analyze(fname)
+
+# main()
+
+
+smoothed_data = np.array([1,2,3,4,5,6,7,8,9])
+split_data = np.split(smoothed_data, 3)
+for arr in split_data:
+    for num in arr:
         pass
-    # plot(data, smoothed_data, file_name)
-
-def main():
-    for fname in glob.glob('*.dat'):
-        analyze(fname)
-
-main()
