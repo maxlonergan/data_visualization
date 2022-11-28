@@ -26,22 +26,25 @@ def plot(old, new, pdf):
 
 def analyze(file):
     file_name = file.replace('dat', 'pdf')
-    data = np.loadtxt(file)
-    smoothed_data = smoothed_array(data)
-    for i in range(len(smoothed_data)-2):
-        y = smoothed_data[i]
-        y_plus_two = smoothed_data[i+2]
-        vt = 5
+    raw_data = np.loadtxt(file)
+    smoothed_data = smoothed_array(raw_data)
+    for i in range(len(raw_data)-2):
+        y = raw_data[i]
+        y_plus_two = raw_data[i+2]
+        vt = 100
         if y_plus_two - y >= vt:
-            pulse_start = y
+            pulse_start = i
             print(pulse_start)
-    # plot(data, smoothed_data, file_name)
+    plot(raw_data, smoothed_data, file_name)
 
 def main():
     for fname in glob.glob('*.dat'):
         analyze(fname)
 
-main()
+# main()
+
+
+analyze('2_Record2308.dat')
 
 
 
