@@ -28,13 +28,14 @@ def analyze(file):
     file_name = file.replace('dat', 'pdf')
     raw_data = np.loadtxt(file)
     smoothed_data = smoothed_array(raw_data)
+    pulses = []
     for i in range(len(raw_data)-2):
         y = raw_data[i]
         y_plus_two = raw_data[i+2]
         vt = 100
         if y_plus_two - y >= vt:
-            pulse_start = i
-            print(pulse_start)
+            pulses.append(i)
+    print(pulses)
     plot(raw_data, smoothed_data, file_name)
 
 def main():

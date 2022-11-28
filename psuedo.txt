@@ -1,0 +1,7 @@
+iterate through raw data
+    y = raw data[i]
+    y_2 = raw data[i + 2]
+    voltage threshold = 100
+    look for pulse mode:
+        if y_2 - y = voltage threshold
+            add pulse point to pulse list 
