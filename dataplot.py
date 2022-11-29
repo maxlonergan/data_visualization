@@ -34,8 +34,10 @@ def analyze(file):
         y_plus_two = raw_data[i+2]
         vt = 100
         if y_plus_two - y >= vt:
-            pulses.append(i)
-    print(pulses)
+            pulse_start = i
+            if raw_data[i+1] > raw_data[pulse_start]:
+                pass
+            print(pulse_start)
     plot(raw_data, smoothed_data, file_name)
 
 def main():
