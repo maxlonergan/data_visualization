@@ -61,8 +61,6 @@ def analyze(file):
     with open(file_dat[:-3] + 'out', 'w') as out:
         print(output_string, file=out, end='')
 
-    print(len(smoothed_data))
-
     plot(raw_data, smoothed_data, file_pdf)
 def main():
     for fname in glob.glob('*.dat'):
